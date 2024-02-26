@@ -35,7 +35,7 @@ Utilizamos el operador bitwise **~** para invertir la máscara booleana (mask). 
 
 El operador bitwise NOT, invierte el valor booleano de cada elemento en la _var_ mask.
 
-Asi que para terminar optimizamos el codigo de la linea donde filtramos los resultados de nuestra mask, para hacerlo en menos lineas.
+Asi que para terminar Optimizamos 🐱‍💻 el codigo de la linea donde filtramos los resultados de nuestra mask, para hacerlo en menos lineas. 
 
     not_found = df_2[not_in]
 
