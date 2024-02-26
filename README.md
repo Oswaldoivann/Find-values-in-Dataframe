@@ -11,6 +11,39 @@ En esta linea validamos si los valores en la columna Job Data de df_2 también e
     mask = df_2['col_name'].isin(df_1['col_name'])
 
 
-Utilizando esta variable mask filtramos el DataFrame df_1. El resultado son las filas de df_1 donde el valor en la columna job_name coincide con un valor en la columna Job Dataprco de df_2. 
+Utilizando la variable mask filtramos el DataFrame df_1. 
+
+El resultado son las filas donde el valor en la columna del df_1 coincide con un valor en la columna del df_2, es decir todos los valores que fueron identificados como True por la función.
 
     val found = df_1[df_1['col_name'].isin(df_2['col_name'][mask])]
+
+Para visualizar los resultados podemos simplemente guardar los resultados en un nuevo dataframe, ocultando el indice de los resultados.
+
+    val found.to_csv('val_found.csv', index=False)
+
+
+Listo ya podemos entregar los datos.
+
+(:
+
+
+## Pero... ¿Si ahora necesito los que no estan? 😮
+
+Utilizamos el operador bitwise **~** para invertir la máscara booleana (mask). Como resultado tenemos una nueva máscara que indica las filas donde el valor en la columna del df_2 no está presente en la columna del df_1.
+
+    not_in = ~mask
+
+El operador bitwise NOT, invierte el valor booleano de cada elemento en la _var_ mask.
+
+Asi que para terminar optimizamos el codigo de la linea donde filtramos los resultados de nuestra mask, para hacerlo en menos lineas.
+
+    not_found = df_2[not_in]
+
+Guarda el dataframe filtrado como un nuevo archivo CSV
+
+    not_found.to_csv('not_found.csv', index=False)
+
+
+
+
+
